@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">POS Application</string>
+    <string name="userID">User ID</string>
+    <string name="userID">User ID</string>
+    <string name="password">Password</string>
+    <string name="passwordHint">Password</string>
+    <string name="btn_enter">Enter</string>
+</resources>
