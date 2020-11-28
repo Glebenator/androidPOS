@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                    Intent adminActivity = new Intent(LoginActivity.this, UsersActivity.class);
+                                    Intent adminActivity = new Intent(LoginActivity.this, AdminActivity.class);
                                     startActivity(adminActivity);
                             }
                         }

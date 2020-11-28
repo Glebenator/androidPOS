@@ -41,11 +41,11 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/tvxuserLastName"
-                android:layout_width="103dp"
+                android:id="@+id/tvxuserID"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:text="LastName"
+                android:layout_margin="7dp"
+                android:text="UserID"
                 android:textColor="#616161"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -59,15 +59,33 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/tvxuserID"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvxuserLastName"
+                android:layout_width="103dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="7dp"
-                android:text="User"
+                android:layout_margin="1dp"
+                android:text="LastName"
                 android:textColor="#616161"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvxuserRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="UserRole"
+                android:textColor="#616161"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,17 +97,8 @@
                 android:id="@+id/ivRowDelete"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_margin="7dp" />
-<!--                android:src="@drawable/ic_delete"-->
-<!--                android:tint="#9E9E9E"/>-->
-
-            <ImageView
-                android:id="@+id/ivRowEdit"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_margin="7dp" />
-<!--                android:src="@drawable/ic_edit"-->
-<!--                android:tint="#9E9E9E"/>-->
+                android:layout_margin="7dp"
+                android:src="@drawable/ic_delete"/>
         </LinearLayout>
 
     </LinearLayout>

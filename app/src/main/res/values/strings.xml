@@ -22,4 +22,5 @@
     <string name="no_users">No users available</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="switch_screen_txt">Swtich Screen</string>
+    <string name="btn_database_screen">Database Screen</string>
 </resources>

@@ -10,9 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSApplication">
         <activity
-            android:name=".UsersActivity"
+            android:name=".AdminActivity"
             android:label="@string/title_activity_admin"
             android:theme="@style/Theme.POSApplication.NoActionBar" />
+        <activity
+            android:name=".UsersActivity"
+            android:label="UsersActivity"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="RegisterActivity"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,6 +2,7 @@ package com.example.posapplication;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -18,4 +19,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM users")
     LiveData<List<UserEntity>> getAllUsers();
+
+    @Delete
+    int delete(UserEntity userEntity);
 }
