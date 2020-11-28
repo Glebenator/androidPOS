@@ -1,8 +1,25 @@
 <resources>
     <string name="app_name">POS Application</string>
     <string name="userID">User ID</string>
-    <string name="userID">User ID</string>
     <string name="password">Password</string>
     <string name="passwordHint">Password</string>
     <string name="btn_enter">Enter</string>
+    <string name="register">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="register_user">Register User</string>
+    <string name="user_role">User Role</string>
+    <string-array name="spinner_role">
+        <item>Admin</item>
+        <item>Server</item>
+        <item>Cook</item>
+    </string-array>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="tab_text_1">Modify Users</string>
+    <string name="tab_text_2">Access Screens</string>
+    <string name="admin_view">Admin View</string>
+    <string name="regNewUser">Register New User</string>
+    <string name="no_users">No users available</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="switch_screen_txt">Swtich Screen</string>
 </resources>
