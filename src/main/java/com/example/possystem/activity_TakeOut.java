@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class activity_TakeOut extends AppCompatActivity {
+    public int callerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +16,8 @@ public class activity_TakeOut extends AppCompatActivity {
     }
 
     public void openMenu(View view){
+        System.out.println(view.getId());
+        callerID = view.getId();
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }

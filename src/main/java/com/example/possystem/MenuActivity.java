@@ -1,6 +1,7 @@
 package com.example.possystem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining_menu);
 
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
     }
 }
