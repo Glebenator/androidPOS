@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     EditText userId, password;
     Button loginBtn;
+    Intent startingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,13 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                    Intent adminActivity = new Intent(LoginActivity.this, AdminActivity.class);
-                                    startActivity(adminActivity);
+                                System.out.println(userEntity.getRole());
+                                if (userEntity.getRole().equals("Admin")) {
+                                    startingIntent = new Intent(getApplicationContext(), AdminActivity.class);
+                                } else if (userEntity.getRole().equals("Server")) {
+                                    startingIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                }
+                                startActivity(startingIntent);
                             }
                         }
                     }).start();

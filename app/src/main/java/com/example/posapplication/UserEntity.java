@@ -1,6 +1,8 @@
 package com.example.posapplication;
 
 
+import android.content.Intent;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -75,4 +77,5 @@ public class UserEntity {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
 }

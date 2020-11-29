@@ -14,7 +14,7 @@ public interface UserDao {
     @Insert
     void registerUser(UserEntity userEntity);
 
-    @Query("SELECT * FROM users WHERE userId=(:userId) AND password=(:password)")
+    @Query("SELECT * FROM users WHERE last_name=(:userId) AND password=(:password)")
     UserEntity login(String userId, String password);
 
     @Query("SELECT * FROM users")
