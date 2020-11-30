@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MenuActivity extends AppCompatActivity {
     //FragmentManager fragmentManager = getSupportFragmentManager();
     //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -28,7 +31,8 @@ public class MenuActivity extends AppCompatActivity {
             tableNum = tableobj.getNumber();
             System.out.println(tableNum);
         }
-        System.out.println();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining_menu);
         TextView textView = (TextView) findViewById(R.id.TableText);

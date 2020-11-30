@@ -1,16 +1,42 @@
 package com.example.posapplication;
 
-import java.io.Serializable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
+import java.util.List;
+
+@Entity(tableName = Table.TABLE_NAME)
 public class Table implements Serializable {
-    private CharSequence number;
+    public static final String TABLE_NAME = "Tables";
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "table_number")
+    private String number;
+
+    @ColumnInfo(name = "price")
     private double checkPrice;
+
+//    @ColumnInfo(name = "menu_items")
+//    private List<MenuItem> menuitems;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public double getCheckPrice() {
         return checkPrice;
     }
 
-    public CharSequence getNumber() {
+    public String getNumber() {
         return number;
     }
 
@@ -18,9 +44,8 @@ public class Table implements Serializable {
         this.checkPrice = checkPrice;
     }
 
-    public void setNumber(CharSequence number) {
+    public void setNumber(String number) {
         this.number = number;
     }
-
 
 }

@@ -16,7 +16,8 @@
         <activity android:name=".DiningActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name=".AdminActivity"/>
-
+        <activity android:name=".MenuItemActivity"/>
+        <activity android:name=".MenuItemAddActivity"/>
         <activity
             android:name=".UsersActivity"
             android:label="UsersActivity"/>

@@ -7,6 +7,6 @@ import androidx.room.Insert;
 public interface TableDao {
 
     @Insert
-    void registerTable(TableEntity tableEntity);
+    void registerTable(Table tableEntity);
 
 }
