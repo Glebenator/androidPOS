@@ -14,12 +14,12 @@ public interface UserDao {
     @Insert
     void registerUser(UserEntity userEntity);
 
+    @Delete
+    int delete(UserEntity userEntity);
+
     @Query("SELECT * FROM users WHERE last_name=(:userId) AND password=(:password)")
     UserEntity login(String userId, String password);
 
     @Query("SELECT * FROM users")
     LiveData<List<UserEntity>> getAllUsers();
-
-    @Delete
-    int delete(UserEntity userEntity);
 }

@@ -7,6 +7,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ *  input is not valid if...
+ *  ... the username/password/first name/last name is empty
+ *  ... the username is already taken
+ */
 @Entity(tableName = UserEntity.TABLE_NAME)
 public class UserEntity {
 

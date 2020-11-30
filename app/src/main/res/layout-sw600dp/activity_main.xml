@@ -20,8 +20,8 @@
 
     <Button
         android:id="@+id/DiningSec"
-        android:layout_width="104dp"
-        android:layout_height="46dp"
+        android:layout_width="189dp"
+        android:layout_height="139dp"
         android:text="Dining"
         app:iconTint="#4CAF50"
         app:layout_constraintBottom_toTopOf="@+id/TravelSec"
@@ -33,8 +33,9 @@
 
     <Button
         android:id="@+id/TravelSec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="188dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="32dp"
         android:text="Take Out"
         app:iconTint="#8BC34A"
         app:iconTintMode="add"
@@ -43,25 +44,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/DelivSec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#8BC34A"
-        android:text="Delivery"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TravelSec"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

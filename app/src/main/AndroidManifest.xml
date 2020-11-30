@@ -9,18 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.POSApplication">
-        <activity
-            android:name=".activity_TakeOut_alternate"
-            android:label="activity__take_out_alternate"/>
-<!--            android:theme="@style/Theme.POSsystem.NoActionBar"></activity>-->
+
+        <activity android:name=".activity_TakeOut_alternate"/>
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".DiningActivity" />
         <activity android:name=".MainActivity"/>
-        <activity
-            android:name=".AdminActivity"
-            android:label="@string/title_activity_admin"
-            android:theme="@style/Theme.POSApplication.NoActionBar" />
+        <activity android:name=".AdminActivity"/>
+
         <activity
             android:name=".UsersActivity"
             android:label="UsersActivity"/>

@@ -23,4 +23,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="switch_screen_txt">Swtich Screen</string>
     <string name="btn_database_screen">Database Screen</string>
+    <string name="hello_first_fragment">hello first fragment</string>
+    <string name="next">next</string>
+    <string name="previous">previous</string>
 </resources>
