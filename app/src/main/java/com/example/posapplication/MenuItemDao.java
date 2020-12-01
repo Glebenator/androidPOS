@@ -10,8 +10,12 @@ import java.util.List;
 
 @Dao
 public interface MenuItemDao {
+
     @Insert
     void insert(MenuItemEntity menuItemEntity);
+
+    @Insert
+    void insertAll(MenuItemEntity[] MenuItemEntities);
 
     @Delete
     int delete(MenuItemEntity menuItemEntity);

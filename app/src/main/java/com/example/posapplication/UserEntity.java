@@ -35,6 +35,22 @@ public class UserEntity {
     @ColumnInfo(name = "userId")
     private String userId;
 
+    public UserEntity(String first_name, String last_name, String password, String Role, String userId) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.password = password;
+        this.Role = Role;
+        this.userId = userId;
+    }
+
+    public UserEntity() {
+        this.first_name = "";
+        this.last_name = "";
+        this.password = "";
+        this.Role = "";
+        this.userId = "";
+    }
+
     public int getId() {
         return id;
     }

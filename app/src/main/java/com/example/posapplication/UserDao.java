@@ -14,6 +14,9 @@ public interface UserDao {
     @Insert
     void registerUser(UserEntity userEntity);
 
+    @Insert
+    void insertAll(UserEntity[] userEntities);
+
     @Delete
     int delete(UserEntity userEntity);
 

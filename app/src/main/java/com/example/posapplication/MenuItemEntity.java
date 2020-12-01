@@ -17,6 +17,16 @@ public class MenuItemEntity {
     @ColumnInfo(name = "price")
     private double price;
 
+    public MenuItemEntity(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public MenuItemEntity() {
+        this.name = "";
+        this.price = 0;
+    }
+
     public int getId() {
         return id;
     }
