@@ -28,7 +28,7 @@ public class MenuItemAddActivity extends AppCompatActivity{
                 public void onClick(View v) {
                     // Create new user entity
                     MenuItemEntity menuItemEntity = new MenuItemEntity();
-                    menuItemEntity.setName(itemName.getText().toString());
+                    menuItemEntity.setItemName(itemName.getText().toString());
                     menuItemEntity.setPrice(Double.parseDouble(itemPrice.getText().toString()));
 
                     if (validateInput(menuItemEntity)) {
@@ -56,7 +56,7 @@ public class MenuItemAddActivity extends AppCompatActivity{
         }
 
         private Boolean validateInput(MenuItemEntity menuItemEntity) {
-            if (menuItemEntity.getName().isEmpty() ||
+            if (menuItemEntity.getItemName().isEmpty() ||
                     !(menuItemEntity.getPrice() != 0))
             {
                 return false;

@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                System.out.println(userEntity.getRole());
                                 if (userEntity.getRole().equals("Admin")) {
                                     startingIntent = new Intent(getApplicationContext(), AdminActivity.class);
                                 } else if (userEntity.getRole().equals("Server")) {

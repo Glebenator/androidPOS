@@ -11,19 +11,19 @@ public class MenuItemEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "name")
-    private String name;
+    @ColumnInfo(name = "itemName")
+    private String itemName;
 
     @ColumnInfo(name = "price")
     private double price;
 
     public MenuItemEntity(String name, double price) {
-        this.name = name;
+        this.itemName = name;
         this.price = price;
     }
 
     public MenuItemEntity() {
-        this.name = "";
+        this.itemName = "";
         this.price = 0;
     }
 
@@ -35,13 +35,14 @@ public class MenuItemEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
+
 
     public double getPrice() {
         return price;

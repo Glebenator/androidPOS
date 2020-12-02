@@ -42,7 +42,7 @@ public class MenuItemListAdapter extends RecyclerView.Adapter<MenuItemListAdapte
 
         if (mMenuItemEntities != null) {
             MenuItemEntity menuItemEntity = mMenuItemEntities.get(position);
-            holder.setData(menuItemEntity.getName(), menuItemEntity.getPrice(), position);
+            holder.setData(menuItemEntity.getItemName(), menuItemEntity.getPrice(), position);
             holder.setListeners();
         } else {
             // Covers the case of data not being ready

@@ -91,18 +91,21 @@ public class MenuActivity extends AppCompatActivity {
         LL = (LinearLayout) findViewById(R.id.linearLayout);
 
     }
+
     public void itemSelected(View v){
         //System.out.println(String.valueOf(v.getTooltipText()));
         //Search in database for v.getTooltipText()
         MenuItemDatabase menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
         MenuItemDao menuItemDao = menuItemDatabase.menuItemDao();
-        //final MenuItemEntity[] menuItem = new MenuItemEntity[1];
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MenuItemEntity testEnt = menuItemDao.searchItem("Benedict");
-                System.out.println(testEnt.getName());
+                MenuItemEntity menuItem = menuItemDao.Search("Benedict");
+                if (menuItem == null) {
+                    System.out.println("menuItem is null!");
+                }
+                System.out.println(menuItem.getItemName());
                 //tableobj.addMenuItem(menuItemDao.searchItem(String.valueOf(v.getTooltipText())));
 
             }
@@ -117,12 +120,10 @@ public class MenuActivity extends AppCompatActivity {
         for (int i = 0; i < tableobj.getNumItems(); i++){
             TextView tv = new TextView(this);
             tv.setTextSize(40);
-            tv.setText(tableobj.getMenuItem(i).getName());
+            tv.setText(tableobj.getMenuItem(i).getItemName());
 
             LL.addView(tv);
             LL.invalidate();
         }
-
-
     }
 }

@@ -20,8 +20,8 @@ public interface MenuItemDao {
     @Delete
     int delete(MenuItemEntity menuItemEntity);
 
-    @Query("SELECT * FROM menuItems WHERE name=(:name)")
-    MenuItemEntity searchItem(String name);
+    @Query("SELECT * FROM menuItems WHERE itemName=(:name)")
+    MenuItemEntity Search(String name);
 
     @Query("SELECT * FROM menuItems")
     LiveData<List<MenuItemEntity>> getAllMenuItems();
