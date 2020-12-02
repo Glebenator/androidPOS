@@ -24,7 +24,9 @@
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Legenday Burger" />
+            android:text="Legenday Burger"
+            android:onClick="itemSelected"
+            android:tooltipText="Legendary Burger"/>
 
         <Button
             android:id="@+id/button4"

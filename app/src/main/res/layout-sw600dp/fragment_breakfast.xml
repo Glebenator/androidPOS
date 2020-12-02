@@ -52,6 +52,6 @@
             android:layout_height="wrap_content"
             android:text="Cheesesteak Hash"
             android:onClick="itemSelected"
-            android:tooltipText="Cheesesteak Hash"/>
+            android:tooltipText="Hash"/>
     </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

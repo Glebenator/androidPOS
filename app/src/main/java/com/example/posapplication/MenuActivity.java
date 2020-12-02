@@ -101,7 +101,7 @@ public class MenuActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MenuItemEntity menuItem = menuItemDao.Search("Benedict");
+                MenuItemEntity menuItem = menuItemDao.Search(String.valueOf(v.getTooltipText()));
                 if (menuItem == null) {
                     System.out.println("menuItem is null!");
                 }

@@ -13,9 +13,17 @@
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".DiningActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity android:name=".AdminActivity"/>
-        <activity android:name=".MenuItemActivity"/>
+        <activity android:name=".MenuItemActivity">
+
+        </activity>
         <activity android:name=".MenuItemAddActivity"/>
         <activity
             android:name=".UsersActivity"
@@ -24,10 +32,7 @@
             android:name=".RegisterActivity"
             android:label="RegisterActivity"/>
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 
