@@ -24,17 +24,22 @@ public class Table implements Serializable {
 
     //    @ColumnInfo(name = "menu_items")
     private ArrayList<MenuItemEntity> menuItemEntities;
+
     private boolean isSent = false;
+
     public Table(){
         menuItemEntities = new ArrayList<MenuItemEntity>();
     }
 
     public void addMenuItem(MenuItemEntity m){
-            menuItemEntities.add(m);
+        MenuItemEntity menuItem = new MenuItemEntity(m.getItemName(), m.getPrice());
+        this.menuItemEntities.add(menuItem);
     }
+
     public MenuItemEntity getMenuItem(int index){
         return menuItemEntities.get(index);
     }
+
     boolean removeMenuItem(int index){
         try{
             menuItemEntities.remove(index);
@@ -45,6 +50,7 @@ public class Table implements Serializable {
         }
         return  true;
     }
+
     public int getNumItems(){
         return menuItemEntities.size();
     }
@@ -76,9 +82,13 @@ public class Table implements Serializable {
     public void setSent(boolean b){
         this.isSent = b;
     }
+
     public boolean getSent(){
         return isSent;
     }
 
+    public void printMenuItems() {
+        System.out.println(menuItemEntities);
+    }
 
 }

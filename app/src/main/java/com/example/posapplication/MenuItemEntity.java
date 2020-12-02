@@ -51,5 +51,14 @@ public class MenuItemEntity {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "MenuItemEntity{" +
+                "id=" + id +
+                ", itemName='" + itemName + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
 
