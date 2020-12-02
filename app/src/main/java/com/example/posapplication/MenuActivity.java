@@ -94,15 +94,10 @@ public class MenuActivity extends AppCompatActivity {
         LL = (LinearLayout) findViewById(R.id.linearLayout);
         menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
         menuItemDao = menuItemDatabase.menuItemDao();
-        updateList();
-
+//        updateList();
     }
 
     public void itemSelected(View v){
-        //System.out.println(String.valueOf(v.getTooltipText()));
-        //Search in database for v.getTooltipText()
-
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -112,31 +107,34 @@ public class MenuActivity extends AppCompatActivity {
                     System.out.println("menuItem is null!");
                 }
                 else {
-                    //System.out.println(menuItem.getItemName());
                     MIE.setItemName(menuItem.getItemName());
                     MIE.setPrice(menuItem.getPrice());
                 }
 
             }
         }).start();
-        if (MIE.getItemName().equals("")){
+        if (MIE.getItemName().equals("")) {
             System.out.println("ero0r");
+        } else {
+            tableobj.addMenuItem(MIE);
+//            updateList();
+            tableobj.printMenuItems();
         }
-        else{ tableobj.addMenuItem(MIE);
-            updateList();}
-
 
     }
-    public void updateList(){
-        //create a for loop to iterate through the vector of items and exctract the name and price for each.
 
-        for (int i = 0; i < tableobj.getNumItems(); i++){
-            System.out.println(tableobj.getMenuItem(i).getItemName() + " for loop" + i);
-            //TextView tv = new TextView(this);
-            //tv.setTextSize(40);
-            //tv.setText(tableobj.getMenuItem(i).getItemName());
-            //LL.addView(tv);
-            //LL.invalidate();
-        }
+    public void updateList(){
+        //create a for loop to iterate through the vector of items and extract the name and price for each.
+        System.out.println("Updated list:");
+        tableobj.printMenuItems();
+
+//        for (int i = 0; i < tableobj.getNumItems(); i++){
+//            System.out.println(tableobj.getMenuItem(i).getItemName() + " for loop" + i);
+//            TextView tv = new TextView(this);
+//            tv.setTextSize(40);
+//            tv.setText(tableobj.getMenuItem(i).getItemName());
+//            LL.addView(tv);
+//            LL.invalidate();
+//        }
     }
 }
