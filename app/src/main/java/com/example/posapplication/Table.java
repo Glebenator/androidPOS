@@ -9,17 +9,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(tableName = Table.TABLE_NAME)
+//@Entity(tableName = Table.TABLE_NAME)
 public class Table implements Serializable {
-    public static final String TABLE_NAME = "Tables";
+//    public static final String TABLE_NAME = "Tables";
 
-    @PrimaryKey(autoGenerate = true)
+//    @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "table_number")
+//    @ColumnInfo(name = "table_number")
     private String number;
 
-    @ColumnInfo(name = "price")
+//    @ColumnInfo(name = "price")
     private double checkPrice;
 
     //    @ColumnInfo(name = "menu_items")
