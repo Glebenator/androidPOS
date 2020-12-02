@@ -3,16 +3,16 @@ package com.example.posapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
     //FragmentManager fragmentManager = getSupportFragmentManager();
@@ -24,19 +24,18 @@ public class MenuActivity extends AppCompatActivity {
     DrinksFragment drinksFragment = new DrinksFragment();
     public CharSequence tableNum;
     LinearLayout LL;
-    ScrollView sv;
-
-
+    Table tableobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         if(getIntent().getExtras() != null){
-            Table tableobj = (Table) getIntent().getSerializableExtra("table");
+           tableobj = (Table) getIntent().getSerializableExtra("table");
             tableNum = tableobj.getNumber();
             System.out.println(tableNum);
         }
-        System.out.println();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining_menu);
         TextView textView = (TextView) findViewById(R.id.TableText);
@@ -88,27 +87,29 @@ public class MenuActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
             }
         });
-
-
-
         LL = (LinearLayout) findViewById(R.id.linearLayout);
-        //sv = (ScrollView) findViewById(R.id.ScrollView1);
 
-
-
-
-
-    }//on create
-
+    }
     public void itemSelected(View v){
-       //System.out.println(v.getTooltipText().toString());
         System.out.println(String.valueOf(v.getTooltipText()));
-        TextView tv = new TextView(this);
-        tv.setTextSize(40);
-        tv.setText(String.valueOf(v.getTooltipText()));
+        //Search in database for v.getTooltipText()
+        //tableobj.addMenuItem()
 
-        LL.addView(tv);
-        LL.invalidate();
+        updateList();
+
+    }
+    public void updateList(){
+        //create a for loop to iterate through the vector of items and exctract the name and price for each.
+
+        for (int i = 0; i < tableobj.getNumItems(); i++){
+            TextView tv = new TextView(this);
+            tv.setTextSize(40);
+            tv.setText(tableobj.getMenuItem(i).getName());
+
+            LL.addView(tv);
+            LL.invalidate();
+        }
+
 
     }
 }

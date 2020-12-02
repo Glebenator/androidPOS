@@ -17,41 +17,32 @@
         app:columnCount="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="itemSelected"
-            android:text="Nat's Hearty Breakfast"
-            android:tooltipText="Nat's breakfast" />
+            android:text="Strawberry Cheescake" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The BC Sunny Start"
-            android:onClick="itemSelected"
-            android:tooltipText="Sunny Start"/>
+            android:text="Blueberry Cheescake" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Classic Benedict"
-            android:onClick="itemSelected"
-            android:tooltipText="Benedict"/>
+            android:text="Salted Caramel Brownie" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cheesesteak Hash"
-            android:onClick="itemSelected"
-            android:tooltipText="Cheesesteak Hash"/>
+            android:text="Apple Pie" />
     </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

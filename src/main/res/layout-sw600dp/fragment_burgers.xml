@@ -16,33 +16,42 @@
         app:columnCount="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Legenday Burger" />
+            android:text="Legenday Burger"
+            android:onClick="itemSelected"
+            android:tooltipText="Legendary"/>
 
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BC Burger" />
+            android:text="BC Burger"
+            android:onClick="itemSelected"
+            android:tooltipText="BC burger"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Impossible Burger" />
+            android:text="Impossible Burger"
+            android:onClick="itemSelected"
+            android:tooltipText="Impossible"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chicken Burger" />
+            android:text="Chicken Burger"
+            android:onClick="itemSelected"
+            android:tooltipText="Chicken BC"/>
     </androidx.gridlayout.widget.GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

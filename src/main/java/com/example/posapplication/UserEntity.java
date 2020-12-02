@@ -82,5 +82,4 @@ public class UserEntity {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
 }

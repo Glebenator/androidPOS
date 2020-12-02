@@ -36,7 +36,8 @@
         app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginRight="16dp" />
 
     <androidx.gridlayout.widget.GridLayout
         app:columnCount="3"
@@ -51,7 +52,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="200dp">
 
         <Button
             android:id="@+id/button28"

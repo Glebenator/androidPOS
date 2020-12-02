@@ -21,9 +21,13 @@
     <string name="regNewUser">Register New User</string>
     <string name="no_users">No users available</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="switch_screen_txt">Swtich Screen</string>
-    <string name="btn_database_screen">Database Screen</string>
+    <string name="switch_screen_txt">Switch Screen</string>
+    <string name="btn_database_screen">User Database</string>
     <string name="hello_first_fragment">hello first fragment</string>
     <string name="next">next</string>
     <string name="previous">previous</string>
+    <string name="btn_menu_item">Menu Item Database</string>
+    <string name="add_menu_item">Add Menu Item</string>
+    <string name="menu_item_name">Menu Item Name</string>
+    <string name="menu_item_price">Menu Item Price</string>
 </resources>

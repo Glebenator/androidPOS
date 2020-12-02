@@ -22,4 +22,6 @@ public class BurgersFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_burgers, container, false);
     }
+    public void itemSelected(View v){
+    }
 }
