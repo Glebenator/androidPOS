@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -22,12 +23,14 @@ public class MenuActivity extends AppCompatActivity {
     DesertsFragment desertsFragment = new DesertsFragment();
     DrinksFragment drinksFragment = new DrinksFragment();
     public CharSequence tableNum;
+    LinearLayout LL;
+    Table tableobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         if(getIntent().getExtras() != null){
-            Table tableobj = (Table) getIntent().getSerializableExtra("table");
+            tableobj = (Table) getIntent().getSerializableExtra("table");
             tableNum = tableobj.getNumber();
             System.out.println(tableNum);
         }
@@ -84,6 +87,28 @@ public class MenuActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
             }
         });
+        LL = (LinearLayout) findViewById(R.id.linearLayout);
+
+    }
+    public void itemSelected(View v){
+        System.out.println(String.valueOf(v.getTooltipText()));
+        //Search in database for v.getTooltipText()
+        //tableobj.addMenuItem()
+
+        updateList();
+
+    }
+    public void updateList(){
+        //create a for loop to iterate through the vector of items and exctract the name and price for each.
+
+        for (int i = 0; i < tableobj.getNumItems(); i++){
+            TextView tv = new TextView(this);
+            tv.setTextSize(40);
+            tv.setText(tableobj.getMenuItem(i).getName());
+
+            LL.addView(tv);
+            LL.invalidate();
+        }
 
 
     }
