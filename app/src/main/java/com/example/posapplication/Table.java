@@ -28,16 +28,9 @@ public class Table implements Serializable {
     private int numItems = 0;
     private boolean isSent = false;
 
-    public boolean addMenuItem(MenuItemEntity m){
-        try{
-            menuItemEntities.add(m);
+    public void addMenuItem(MenuItemEntity m){
+            this.menuItemEntities.add(m);
             numItems +=1;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("error adding");
-            return false;
-        }
-        return true;
     }
     public MenuItemEntity getMenuItem(int index){
         return menuItemEntities.get(index);

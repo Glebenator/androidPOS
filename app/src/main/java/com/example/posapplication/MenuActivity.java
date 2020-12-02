@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -91,9 +92,21 @@ public class MenuActivity extends AppCompatActivity {
 
     }
     public void itemSelected(View v){
-        System.out.println(String.valueOf(v.getTooltipText()));
+        //System.out.println(String.valueOf(v.getTooltipText()));
         //Search in database for v.getTooltipText()
-        //tableobj.addMenuItem()
+        MenuItemDatabase menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
+        MenuItemDao menuItemDao = menuItemDatabase.menuItemDao();
+        //final MenuItemEntity[] menuItem = new MenuItemEntity[1];
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MenuItemEntity testEnt = menuItemDao.searchItem("Benedict");
+                System.out.println(testEnt.getName());
+                //tableobj.addMenuItem(menuItemDao.searchItem(String.valueOf(v.getTooltipText())));
+
+            }
+        }).start();
 
         updateList();
 

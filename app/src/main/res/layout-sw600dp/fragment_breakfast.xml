@@ -10,39 +10,48 @@
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:columnCount="1"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        app:columnCount="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nat's Hearty Breakfast" />
+            android:text="Nat's Hearty Breakfast"
+            android:onClick="itemSelected"
+            android:tooltipText="Nat's Breakfast"/>
 
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The BC Sunny Start" />
+            android:text="The BC Sunny Start"
+            android:onClick="itemSelected"
+            android:tooltipText="Sunny Start"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Classic Benedict" />
+            android:text="Classic Benedict"
+            android:onClick="itemSelected"
+            android:tooltipText="Benedict"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cheesesteak Hash" />
+            android:text="Cheesesteak Hash"
+            android:onClick="itemSelected"
+            android:tooltipText="Cheesesteak Hash"/>
     </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

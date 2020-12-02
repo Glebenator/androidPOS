@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSApplication">
 
-        <activity android:name=".activity_TakeOut_alternate"/>
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".DiningActivity" />

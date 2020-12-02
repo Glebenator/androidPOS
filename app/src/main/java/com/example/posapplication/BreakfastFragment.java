@@ -23,4 +23,7 @@ public class BreakfastFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_breakfast, container, false);
     }
+    public void itemSelected(View v){
+
+    }
 }
