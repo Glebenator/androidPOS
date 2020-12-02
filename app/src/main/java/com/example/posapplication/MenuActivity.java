@@ -25,7 +25,10 @@ public class MenuActivity extends AppCompatActivity {
     DrinksFragment drinksFragment = new DrinksFragment();
     public CharSequence tableNum;
     LinearLayout LL;
-    Table tableobj;
+    Table tableobj = new Table();
+    MenuItemEntity MIE = new MenuItemEntity();
+    MenuItemDatabase menuItemDatabase;
+    MenuItemDao menuItemDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,41 +92,51 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         LL = (LinearLayout) findViewById(R.id.linearLayout);
+        menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
+        menuItemDao = menuItemDatabase.menuItemDao();
+        updateList();
 
     }
 
     public void itemSelected(View v){
         //System.out.println(String.valueOf(v.getTooltipText()));
         //Search in database for v.getTooltipText()
-        MenuItemDatabase menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
-        MenuItemDao menuItemDao = menuItemDatabase.menuItemDao();
+
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 MenuItemEntity menuItem = menuItemDao.Search(String.valueOf(v.getTooltipText()));
+                System.out.println(menuItem.getItemName());
                 if (menuItem == null) {
                     System.out.println("menuItem is null!");
                 }
-                System.out.println(menuItem.getItemName());
-                //tableobj.addMenuItem(menuItemDao.searchItem(String.valueOf(v.getTooltipText())));
+                else {
+                    //System.out.println(menuItem.getItemName());
+                    MIE.setItemName(menuItem.getItemName());
+                    MIE.setPrice(menuItem.getPrice());
+                }
 
             }
         }).start();
+        if (MIE.getItemName().equals("")){
+            System.out.println("ero0r");
+        }
+        else{ tableobj.addMenuItem(MIE);
+            updateList();}
 
-        updateList();
 
     }
     public void updateList(){
         //create a for loop to iterate through the vector of items and exctract the name and price for each.
 
         for (int i = 0; i < tableobj.getNumItems(); i++){
-            TextView tv = new TextView(this);
-            tv.setTextSize(40);
-            tv.setText(tableobj.getMenuItem(i).getItemName());
-
-            LL.addView(tv);
-            LL.invalidate();
+            System.out.println(tableobj.getMenuItem(i).getItemName() + " for loop" + i);
+            //TextView tv = new TextView(this);
+            //tv.setTextSize(40);
+            //tv.setText(tableobj.getMenuItem(i).getItemName());
+            //LL.addView(tv);
+            //LL.invalidate();
         }
     }
 }
