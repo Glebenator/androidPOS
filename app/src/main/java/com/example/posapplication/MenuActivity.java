@@ -100,32 +100,28 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void itemSelected(View v){
-        new Thread(new Runnable() {
+        Thread itemThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 MenuItemEntity menuItem = menuItemDao.Search(String.valueOf(v.getTooltipText()));
-                System.out.println(menuItem.getItemName() + " after run");
-                //if (menuItem == null) {
-                 //   System.out.println("menuItem is null!");
-                //}
-               // else {
-                    //MIE.setItemName(menuItem.getItemName());
-                   // MIE.setPrice(menuItem.getPrice());
-                    tableobj.addMenuItem(menuItem);
-                    updateList();
-                //}
-
+                MIE.setItemName(menuItem.getItemName());
+                MIE.setPrice(menuItem.getPrice());
             }
-        }).start();
-       //if (MIE.getItemName().equals("")) {
-        //    System.out.println("ero0r");
-        //} else {
-        //    tableobj.addMenuItem(MIE);
-        //    tableobj.printMenuItems();
-        //    updateList();
-        //}
+        });
+        itemThread.start();
+        try {
+            itemThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-
+        if (MIE.getItemName().equals("")) {
+            System.out.println("ero0r");
+        } else {
+            tableobj.addMenuItem(MIE);
+            tableobj.printMenuItems();
+            updateList();
+        }
     }
 
     public void updateList(){
