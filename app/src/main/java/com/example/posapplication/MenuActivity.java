@@ -17,8 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
-    //FragmentManager fragmentManager = getSupportFragmentManager();
-    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     BreakfastFragment breakfastFragment = new BreakfastFragment();
     BurgersFragment burgersFragment = new BurgersFragment();
     PastasFragment pastasFragment = new PastasFragment();
@@ -27,6 +25,8 @@ public class MenuActivity extends AppCompatActivity {
     public CharSequence tableNum;
     LinearLayout LL;
     Table tableobj;
+    TableDatabase tableDatabase;
+    TableDao tableDao;
     MenuItemEntity MIE = new MenuItemEntity();
     MenuItemDatabase menuItemDatabase;
     MenuItemDao menuItemDao;
@@ -93,6 +93,12 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        // Updates table object
+        tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
+        tableDao = tableDatabase.tableDao();
+        addTable();
+
+        // Updates menuItems
         menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
         menuItemDao = menuItemDatabase.menuItemDao();
         updateList();
@@ -118,11 +124,49 @@ public class MenuActivity extends AppCompatActivity {
             System.out.println("ero0r");
         } else {
             tableobj.addMenuItem(MIE);
+
+
+
             updateList();
         }
     }
 
-    public void updateList(){
+    public void addTable() {
+        // Add table entity
+        Thread addTable = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                tableDao.registerTable(tableobj);
+            }
+        });
+        addTable.start();
+        try {
+            addTable.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Deletes previous table instance and adds new table instance
+    public void updateTable(MenuItemEntity newMenuItem) {
+        Thread tableThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Table table = tableDao.Search(tableobj.getNumber());
+
+                System.out.println(table.getNumber());
+                System.out.println(table.getNumItems());
+            }
+        });
+        tableThread.start();
+        try {
+            tableThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateList() {
         LL = (LinearLayout) findViewById(R.id.linearLayout);
         ArrayList<MenuItemEntity> menuItemEntities = tableobj.getMenuArray();
         if(!isLoaded) {
