@@ -90,5 +90,8 @@ public class Table implements Serializable {
     public void printMenuItems() {
         System.out.println(menuItemEntities);
     }
+    public ArrayList<MenuItemEntity> getMenuArray(){
+        return menuItemEntities;
+    }
 
 }

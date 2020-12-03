@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class MenuActivity extends AppCompatActivity {
     MenuItemEntity MIE = new MenuItemEntity();
     MenuItemDatabase menuItemDatabase;
     MenuItemDao menuItemDao;
+    boolean isLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +93,10 @@ public class MenuActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
             }
         });
-        LL = (LinearLayout) findViewById(R.id.linearLayout);
+
         menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
         menuItemDao = menuItemDatabase.menuItemDao();
-//        updateList();
+        updateList();
     }
 
     public void itemSelected(View v){
@@ -102,39 +104,47 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 MenuItemEntity menuItem = menuItemDao.Search(String.valueOf(v.getTooltipText()));
-                System.out.println(menuItem.getItemName());
-                if (menuItem == null) {
-                    System.out.println("menuItem is null!");
-                }
-                else {
-                    MIE.setItemName(menuItem.getItemName());
-                    MIE.setPrice(menuItem.getPrice());
-                }
+                System.out.println(menuItem.getItemName() + " after run");
+                //if (menuItem == null) {
+                 //   System.out.println("menuItem is null!");
+                //}
+               // else {
+                    //MIE.setItemName(menuItem.getItemName());
+                   // MIE.setPrice(menuItem.getPrice());
+                    tableobj.addMenuItem(menuItem);
+                    updateList();
+                //}
 
             }
         }).start();
-        if (MIE.getItemName().equals("")) {
-            System.out.println("ero0r");
-        } else {
-            tableobj.addMenuItem(MIE);
-//            updateList();
-            tableobj.printMenuItems();
-        }
+       //if (MIE.getItemName().equals("")) {
+        //    System.out.println("ero0r");
+        //} else {
+        //    tableobj.addMenuItem(MIE);
+        //    tableobj.printMenuItems();
+        //    updateList();
+        //}
+
 
     }
 
     public void updateList(){
-        //create a for loop to iterate through the vector of items and extract the name and price for each.
-        System.out.println("Updated list:");
-        tableobj.printMenuItems();
-
-//        for (int i = 0; i < tableobj.getNumItems(); i++){
-//            System.out.println(tableobj.getMenuItem(i).getItemName() + " for loop" + i);
-//            TextView tv = new TextView(this);
-//            tv.setTextSize(40);
-//            tv.setText(tableobj.getMenuItem(i).getItemName());
-//            LL.addView(tv);
-//            LL.invalidate();
-//        }
+        LL = (LinearLayout) findViewById(R.id.linearLayout);
+        ArrayList<MenuItemEntity> menuItemEntities = tableobj.getMenuArray();
+        if(!isLoaded) {
+            for (int i = 0; i < menuItemEntities.size(); i++) {
+                TextView tv1 = new TextView(this);
+                tv1.setText(menuItemEntities.get(i).getItemName());
+                tv1.setTextSize(40);
+                LL.addView(tv1);
+            }
+        }
+        else {
+            TextView tv1 = new TextView(this);
+            tv1.setText(menuItemEntities.get(menuItemEntities.size()-1).getItemName());
+            tv1.setTextSize(40);
+            LL.addView(tv1);
+        }
+        isLoaded = true;
     }
 }
