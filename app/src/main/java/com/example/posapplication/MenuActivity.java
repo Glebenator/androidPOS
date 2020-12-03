@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class MenuActivity extends AppCompatActivity {
     MenuItemDatabase menuItemDatabase;
     MenuItemDao menuItemDao;
     boolean isLoaded = false;
+    double totalPrice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,12 +127,17 @@ public class MenuActivity extends AppCompatActivity {
     public void updateList(){
         LL = (LinearLayout) findViewById(R.id.linearLayout);
         ArrayList<MenuItemEntity> menuItemEntities = tableobj.getMenuArray();
+        TextView priceText = (TextView) findViewById(R.id.editTextNumber);
         if(!isLoaded) {
             for (int i = 0; i < menuItemEntities.size(); i++) {
                 TextView tv1 = new TextView(this);
                 tv1.setText(menuItemEntities.get(i).getItemName());
                 tv1.setTextSize(40);
                 LL.addView(tv1);
+
+                totalPrice += menuItemEntities.get(i).getPrice();
+                priceText.setText( " " + totalPrice);
+
             }
         }
         else {
@@ -138,7 +145,12 @@ public class MenuActivity extends AppCompatActivity {
             tv1.setText(menuItemEntities.get(menuItemEntities.size()-1).getItemName());
             tv1.setTextSize(40);
             LL.addView(tv1);
+            totalPrice += menuItemEntities.get(menuItemEntities.size()-1).getPrice();
+            priceText.setText( " " + totalPrice);
         }
         isLoaded = true;
+    }
+    public void sendItems(View v){
+        System.out.println("Sending items");
     }
 }

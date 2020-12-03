@@ -9,31 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.POSApplication">
-
+        <activity
+            android:name=".cookScreen"
+            android:label="@string/title_activity_cook_screen"></activity>
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".DiningActivity" />
         <activity android:name=".MainActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".AdminActivity"/>
-        <activity android:name=".MenuItemActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".MenuItemAddActivity"/>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".MenuItemActivity"></activity>
+        <activity android:name=".MenuItemAddActivity" />
         <activity
             android:name=".UsersActivity"
-            android:label="UsersActivity"/>
+            android:label="UsersActivity" />
         <activity
             android:name=".RegisterActivity"
-            android:label="RegisterActivity"/>
-        <activity android:name=".LoginActivity">
-
-        </activity>
+            android:label="RegisterActivity" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

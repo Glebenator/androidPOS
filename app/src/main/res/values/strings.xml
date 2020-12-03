@@ -30,4 +30,8 @@
     <string name="add_menu_item">Add Menu Item</string>
     <string name="menu_item_name">Menu Item Name</string>
     <string name="menu_item_price">Menu Item Price</string>
+    <string name="title_activity_cook_screen">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

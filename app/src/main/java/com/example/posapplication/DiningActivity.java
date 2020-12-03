@@ -14,17 +14,12 @@ public class DiningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining);
-
-        table1 = (Button) findViewById(R.id.table1Btn);
-        table1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDiningMenuActivity();
-            }
-        });
     }
-    public void openDiningMenuActivity() {
+    public void openMenu(View view){
+        Table tableobj = new Table();
+        tableobj.setNumber(String.valueOf(view.getTooltipText()));
         Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra("table", tableobj);
         startActivity(intent);
     }
 }
