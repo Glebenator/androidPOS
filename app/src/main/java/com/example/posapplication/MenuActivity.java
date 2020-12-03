@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
     DrinksFragment drinksFragment = new DrinksFragment();
     public CharSequence tableNum;
     LinearLayout LL;
-    Table tableobj = new Table();
+    Table tableobj;
     MenuItemEntity MIE = new MenuItemEntity();
     MenuItemDatabase menuItemDatabase;
     MenuItemDao menuItemDao;
@@ -40,7 +40,6 @@ public class MenuActivity extends AppCompatActivity {
             tableNum = tableobj.getNumber();
             System.out.println(tableNum);
         }
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining_menu);
@@ -119,7 +118,6 @@ public class MenuActivity extends AppCompatActivity {
             System.out.println("ero0r");
         } else {
             tableobj.addMenuItem(MIE);
-            tableobj.printMenuItems();
             updateList();
         }
     }

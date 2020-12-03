@@ -7,42 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".BreakfastFragment">
 
-    <androidx.gridlayout.widget.GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        app:columnCount="1"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pop" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Pop"
+            android:onClick="itemSelected"
+            android:tooltipText="Pop"/>
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tea" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tea"
+            android:onClick="itemSelected"
+            android:tooltipText="Tea"/>
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Coffee" />
+            android:text="Coffee"
+            android:onClick="itemSelected"
+            android:tooltipText="Coffee"/>
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Shakes" />
-    </androidx.gridlayout.widget.GridLayout>
+            android:text="Shakes"
+            android:onClick="itemSelected"
+            android:tooltipText="Shakes"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

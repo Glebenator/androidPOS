@@ -7,15 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".BreakfastFragment">
 
-    <androidx.gridlayout.widget.GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginRight="32dp"
         android:onClick="itemSelected"
-        app:columnCount="1"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -25,34 +24,27 @@
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nat's Hearty Breakfast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:onClick="itemSelected"
-            android:tooltipText="Nat's Breakfast"/>
+            android:text="Nat's Hearty Breakfast"
+            android:tooltipText="Nat's Breakfast" />
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="The BC Sunny Start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:onClick="itemSelected"
-            android:tooltipText="Sunny Start"/>
+            android:text="The BC Sunny Start"
+            android:tooltipText="Sunny Start" />
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="itemSelected"
             android:text="Classic Benedict"
-            android:onClick="itemSelected"
-            android:tooltipText="Benedict"/>
+            android:tooltipText="Benedict" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cheesesteak Hash"
-            android:onClick="itemSelected"
-            android:tooltipText="Hash"/>
-    </androidx.gridlayout.widget.GridLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

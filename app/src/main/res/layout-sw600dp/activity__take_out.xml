@@ -21,8 +21,8 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.gridlayout.widget.GridLayout
-        android:layout_width="724dp"
-        android:layout_height="751dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
@@ -33,7 +33,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.289"
+        app:layout_constraintVertical_bias="0.0"
         app:rowCount="5">
 
         <Button
@@ -58,8 +58,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="102"
-            android:tooltipText="102"
             android:textSize="20sp"
+            android:tooltipText="102"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -73,8 +73,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="103"
-            android:tooltipText="103"
             android:textSize="20sp"
+            android:tooltipText="103"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -88,8 +88,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="104"
-            android:tooltipText="104"
             android:textSize="20sp"
+            android:tooltipText="104"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -103,8 +103,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="105"
-            android:tooltipText="105"
             android:textSize="20sp"
+            android:tooltipText="105"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -118,8 +118,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="106"
-            android:tooltipText="106"
             android:textSize="20sp"
+            android:tooltipText="106"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -133,8 +133,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="107"
-            android:tooltipText="107"
             android:textSize="20sp"
+            android:tooltipText="107"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -148,8 +148,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="108"
-            android:tooltipText="108"
             android:textSize="20sp"
+            android:tooltipText="108"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -163,8 +163,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="109"
-            android:tooltipText="109"
             android:textSize="20sp"
+            android:tooltipText="109"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -178,8 +178,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="110"
-            android:tooltipText="110"
             android:textSize="20sp"
+            android:tooltipText="110"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -193,8 +193,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="111"
-            android:tooltipText="111"
             android:textSize="20sp"
+            android:tooltipText="111"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -208,8 +208,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="112"
-            android:tooltipText="112"
             android:textSize="20sp"
+            android:tooltipText="112"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -223,8 +223,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="113"
-            android:tooltipText="113"
             android:textSize="20sp"
+            android:tooltipText="113"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -238,8 +238,8 @@
             android:backgroundTint="#D69090"
             android:onClick="openMenu"
             android:text="114"
-            android:tooltipText="114"
             android:textSize="20sp"
+            android:tooltipText="114"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />

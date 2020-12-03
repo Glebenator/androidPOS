@@ -23,4 +23,5 @@ public class DrinksFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_drinks, container, false);
     }
+    public void itemSelected(View v){ }
 }

@@ -18,7 +18,6 @@ public class activity_TakeOut extends AppCompatActivity {
 
     public void openMenu(View view){
         Table tableobj = new Table();
-
         tableobj.setNumber(String.valueOf(view.getTooltipText()));
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("table", tableobj);
