@@ -33,5 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
+
+        Button CookScreenButton = (Button) findViewById(R.id.CookSec);
+        CookScreenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), cookScreen.class);
+                startActivity(startIntent);
+            }
+        });
     }
 }

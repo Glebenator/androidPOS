@@ -4,6 +4,8 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.List;
+
 @Dao
 public interface TableDao {
 
@@ -12,4 +14,7 @@ public interface TableDao {
 
     @Query("SELECT * FROM tables WHERE table_number=(:table_number)")
     Table Search(String table_number);
+
+    @Query("SELECT * FROM tables")
+    List<Table> getAll();
 }
