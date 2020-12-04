@@ -4,8 +4,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = MenuItemEntity.TABLE_NAME)
-public class MenuItemEntity {
+public class MenuItemEntity implements Serializable {
     public static final String TABLE_NAME = "menuItems";
 
     @PrimaryKey(autoGenerate = true)

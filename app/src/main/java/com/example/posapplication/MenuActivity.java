@@ -95,14 +95,33 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
+        tableDao = tableDatabase.tableDao();
         Button SendButton = findViewById(R.id.sendButton);
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // add table object to table database
-                tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
-                tableDao = tableDatabase.tableDao();
                 addTable();
+
+                // Check that item is is added properly
+                Thread searchThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Table checkTable = tableDao.Search(String.valueOf(tableobj.getNumber()));
+                        if (checkTable != null) {
+                            System.out.println("Table " + tableobj.getNumber() +":");
+                            checkTable.printMenuItems();
+                        }
+                    }
+                });
+
+                searchThread.start();
+                try{
+                    searchThread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -110,6 +129,7 @@ public class MenuActivity extends AppCompatActivity {
         menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
         menuItemDao = menuItemDatabase.menuItemDao();
         updateList();
+
     }
 
     public void itemSelected(View v){
@@ -141,7 +161,6 @@ public class MenuActivity extends AppCompatActivity {
         Thread addTable = new Thread(new Runnable() {
             @Override
             public void run() {
-                tableobj.printMenuItems();
                 tableDao.registerTable(tableobj);
             }
         });
@@ -152,8 +171,6 @@ public class MenuActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Table object added to db");
     }
 
     // Deletes previous table instance and adds new table instance

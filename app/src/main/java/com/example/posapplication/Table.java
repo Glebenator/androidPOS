@@ -105,6 +105,6 @@ public class Table implements Serializable {
     }
 
     public void setMenuArray(ArrayList<MenuItemEntity> menuArray) {
-        Collections.copy(this.menuItemEntities, menuArray);
+        this.menuItemEntities = (ArrayList<MenuItemEntity>) menuArray.clone();
     }
 }
