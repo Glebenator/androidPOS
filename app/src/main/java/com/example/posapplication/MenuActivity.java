@@ -3,6 +3,7 @@ package com.example.posapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -156,11 +157,12 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    // Add table entity
+    // Add table entity and delete previous table value
     public void addTable() {
         Thread addTable = new Thread(new Runnable() {
             @Override
             public void run() {
+                tableDao.deleteByTable(tableobj.getNumber());
                 tableDao.registerTable(tableobj);
             }
         });

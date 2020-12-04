@@ -19,7 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class cookScreen extends AppCompatActivity {
+public class CookScreen extends AppCompatActivity {
     List<Table> tableList;
     LinearLayout HL;
     int index = 0;
@@ -48,7 +48,6 @@ public class cookScreen extends AppCompatActivity {
     }
 
     public void displayItems(){
-
         HL = (LinearLayout) findViewById(R.id.ParentHorizontal); //defined in XML
         for (int i = 0; i < tableList.size(); i++){ //Loop through every available table in Database
             ScrollView sv = new ScrollView(this); //create a scroll view(vertical to fit many menu items)
@@ -64,13 +63,31 @@ public class cookScreen extends AppCompatActivity {
                 public void onClick(View v) {
                     index = finalI;
                     System.out.println("WE could delete table number " + index + " Right now");
+                    // Start of delete implementation
+                    // Table deletes upon click but doesn't update
+                    TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
+                    TableDao tableDao = tableDatabase.tableDao();
+
+                    Thread deleteThread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tableDao.deleteByTable(tableList.get(index).getNumber());
+                        }
+                    });
+                    deleteThread.start();
+                    try {
+                        deleteThread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
+
             TextView tablenum = new TextView(this); //table number text
             tablenum.setTextSize(40);
             tablenum.setText(tableList.get(i).getNumber());
             ParentVertical.addView(tablenum); //add to the parent layout
-            for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop throuhg each menu item in a given table
+            for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
                 tv.setTextSize(35);
                 tv.setText(tableList.get(i).getMenuItem(j).getItemName());
@@ -81,13 +98,10 @@ public class cookScreen extends AppCompatActivity {
             ParentVertical.addView(sv); //ParenVertical layout holds a table number and a scroll view
             HL.addView(ParentVertical); //Horizontal layout is the main parent.
         }
-
     }
 
     public void bumpItems(View v){
-        //delte item (index)
+        //delete item (index)
 
     }
-
-
 }
