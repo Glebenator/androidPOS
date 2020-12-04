@@ -63,7 +63,6 @@ public class cookScreen extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     index = finalI;
-                    System.out.println("WE could delete table number " + index + " Right now");
                 }
             });
             TextView tablenum = new TextView(this); //table number text
@@ -80,12 +79,33 @@ public class cookScreen extends AppCompatActivity {
             sv.addView(ll); //Scroll view holds LL that holds menu item names
             ParentVertical.addView(sv); //ParenVertical layout holds a table number and a scroll view
             HL.addView(ParentVertical); //Horizontal layout is the main parent.
+            HL.invalidate();
         }
 
     }
 
     public void bumpItems(View v){
         //delte item (index)
+        if (tableList.size() == 0){
+            System.out.println("Empty");
+        }
+        else {
+            Thread itemThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    TableDatabase.getTableDatabase(getApplicationContext()).tableDao().delete(tableList.get(index));
+                    System.out.println("deleting table index " + index);
+                }
+            });
+            itemThread.start();
+            try {
+                itemThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("deleted (i hop)");
+            getItems();
+        }
 
     }
 

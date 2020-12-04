@@ -1,6 +1,7 @@
 package com.example.posapplication;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -17,4 +18,7 @@ public interface TableDao {
 
     @Query("SELECT * FROM tables")
     List<Table> getAll();
+
+    @Delete
+    int delete(Table tableEntity);
 }
