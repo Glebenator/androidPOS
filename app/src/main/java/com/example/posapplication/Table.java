@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity(tableName = Table.TABLE_NAME)
@@ -75,12 +76,12 @@ public class Table implements Serializable {
         return checkPrice;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
     public void setCheckPrice(double checkPrice) {
         this.checkPrice = checkPrice;
+    }
+
+    public String getNumber() {
+        return number;
     }
 
     public void setNumber(String number) {
@@ -98,8 +99,12 @@ public class Table implements Serializable {
     public void printMenuItems() {
         System.out.println(menuItemEntities);
     }
+
     public ArrayList<MenuItemEntity> getMenuArray(){
         return menuItemEntities;
     }
 
+    public void setMenuArray(ArrayList<MenuItemEntity> menuArray) {
+        Collections.copy(this.menuItemEntities, menuArray);
+    }
 }

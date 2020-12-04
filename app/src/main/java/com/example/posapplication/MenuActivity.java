@@ -95,10 +95,16 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        // Updates table object
-        tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
-        tableDao = tableDatabase.tableDao();
-        addTable();
+        Button SendButton = findViewById(R.id.sendButton);
+        SendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add table object to table database
+                tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
+                tableDao = tableDatabase.tableDao();
+                addTable();
+            }
+        });
 
         // Updates menuItems
         menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
@@ -126,27 +132,28 @@ public class MenuActivity extends AppCompatActivity {
             System.out.println("ero0r");
         } else {
             tableobj.addMenuItem(MIE);
-
-
-
             updateList();
         }
     }
 
+    // Add table entity
     public void addTable() {
-        // Add table entity
         Thread addTable = new Thread(new Runnable() {
             @Override
             public void run() {
+                tableobj.printMenuItems();
                 tableDao.registerTable(tableobj);
             }
         });
+
         addTable.start();
         try {
             addTable.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Table object added to db");
     }
 
     // Deletes previous table instance and adds new table instance
@@ -155,7 +162,6 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Table table = tableDao.Search(tableobj.getNumber());
-
                 System.out.println(table.getNumber());
                 System.out.println(table.getNumItems());
             }
