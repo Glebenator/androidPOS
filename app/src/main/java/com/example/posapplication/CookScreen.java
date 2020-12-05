@@ -35,7 +35,7 @@ public class CookScreen extends AppCompatActivity {
         Thread itemThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                tableList = TableDatabase.getTableDatabase(getApplicationContext()).tableDao().getAll();
+                tableList = TableDatabase.getTableDatabase(getApplicationContext()).tableDao().getIsReady(false);
             }
         });
         itemThread.start();
@@ -58,6 +58,7 @@ public class CookScreen extends AppCompatActivity {
             ll.setOrientation(LinearLayout.VERTICAL);
             ll.isClickable(); //we can click on the layout which is scrollable
             int finalI = i;
+
             ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,6 +81,7 @@ public class CookScreen extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
                 }
             });
 

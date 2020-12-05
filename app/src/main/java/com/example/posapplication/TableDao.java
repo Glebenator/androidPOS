@@ -20,6 +20,9 @@ public interface TableDao {
     @Query("SELECT * FROM tables WHERE table_number=(:table_number)")
     Table Search(String table_number);
 
+    @Query("Select * FROM tables WHERE is_ready=(:is_ready)")
+    List<Table> getIsReady(boolean is_ready);
+
     @Query("SELECT * FROM tables")
     List<Table> getAll();
 
