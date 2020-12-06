@@ -63,25 +63,6 @@ public class CookScreen extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     index = finalI;
-                    System.out.println("WE could delete table number " + index + " Right now");
-                    // Start of delete implementation
-                    // Table deletes upon click but doesn't update
-                    TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
-                    TableDao tableDao = tableDatabase.tableDao();
-
-                    Thread deleteThread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            tableDao.deleteByTable(tableList.get(index).getNumber());
-                        }
-                    });
-                    deleteThread.start();
-                    try {
-                        deleteThread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
                 }
             });
 
@@ -103,7 +84,21 @@ public class CookScreen extends AppCompatActivity {
     }
 
     public void bumpItems(View v){
-        //delete item (index)
+        TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
+        TableDao tableDao = tableDatabase.tableDao();
+
+        Thread deleteThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                tableDao.deleteByTable(tableList.get(index).getNumber());
+            }
+        });
+        deleteThread.start();
+        try {
+            deleteThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }
