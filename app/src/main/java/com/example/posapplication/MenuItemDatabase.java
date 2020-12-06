@@ -8,6 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.posapplication.Data.MenuItemData;
+
 @Database(entities = MenuItemEntity.class, version = 1, exportSchema = false)
 public abstract class MenuItemDatabase extends RoomDatabase {
 

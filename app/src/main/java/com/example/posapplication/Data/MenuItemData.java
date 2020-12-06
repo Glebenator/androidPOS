@@ -1,4 +1,6 @@
-package com.example.posapplication;
+package com.example.posapplication.Data;
+
+import com.example.posapplication.MenuItemEntity;
 
 public class MenuItemData {
     public static MenuItemEntity[] populateMenuItemDatabase() {

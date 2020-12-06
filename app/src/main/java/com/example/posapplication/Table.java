@@ -29,9 +29,13 @@ public class Table implements Serializable {
     @ColumnInfo(name = "is_ready")
     private boolean isReady = false;
 
-    public Table(){
+    public Table() {
         menuItemEntities = new ArrayList<MenuItemEntity>();
         isReady = false;
+    }
+
+    public Table(String table_number) {
+        this.number = table_number;
     }
 
     public void addMenuItem(MenuItemEntity m){
