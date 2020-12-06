@@ -24,6 +24,7 @@ public class CookScreen extends AppCompatActivity {
     List<Table> tableList;
     LinearLayout HL;
     int index = 0;
+    View clickedView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class CookScreen extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     index = finalI;
+                    clickedView = v;
                 }
             });
 
@@ -104,6 +106,10 @@ public class CookScreen extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        HL.removeAllViews();
+        getItems();
+
+
 
     }
 }
