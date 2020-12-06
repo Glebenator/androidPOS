@@ -213,10 +213,8 @@ public class MenuActivity extends AppCompatActivity {
 
                 totalPrice += menuItemEntities.get(i).getPrice();
                 priceText.setText( " " + totalPrice);
-
-
-
             }
+            index = menuItemEntities.size();
         }
         else {
             TextView tv1 = new TextView(this);
@@ -224,6 +222,7 @@ public class MenuActivity extends AppCompatActivity {
             tv1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    System.out.println(v.getTooltipText());
                     PopupMenu popupMenu = new PopupMenu(MenuActivity.this, v);
                     popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -231,9 +230,9 @@ public class MenuActivity extends AppCompatActivity {
                         public boolean onMenuItemClick(MenuItem item) {
                             if (item.getItemId() == R.id.delButton) {
                                 LL.removeView(v);
-                                System.out.println(tv1.getTooltipText());
-                               menuItemEntities.remove(tv1.getTooltipText());
-                               tableobj.removeMenuItem((Integer.parseInt(String.valueOf(tv1.getTooltipText()))));
+                                System.out.println(v.getTooltipText());
+                               menuItemEntities.remove(v.getTooltipText());
+                               tableobj.removeMenuItem((Integer.parseInt(String.valueOf(v.getTooltipText()))));
                                 index -= 1;
                             }
                             return false;
@@ -246,7 +245,8 @@ public class MenuActivity extends AppCompatActivity {
             tv1.setTextSize(40);
             LL.addView(tv1);
             totalPrice += menuItemEntities.get(menuItemEntities.size()-1).getPrice();
-            priceText.setText( " " + totalPrice);
+            String result = String.format("%.2f", totalPrice);
+            priceText.setText(result);
             index += 1;
 
         }
