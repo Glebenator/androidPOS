@@ -6,14 +6,17 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -200,6 +203,25 @@ public class MenuActivity extends AppCompatActivity {
         if(!isLoaded) {
             for (int i = 0; i < menuItemEntities.size(); i++) {
                 TextView tv1 = new TextView(this);
+                int finalI = i;
+                tv1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("item in pos " + finalI + "selected");
+                        PopupMenu popupMenu = new PopupMenu(MenuActivity.this, v);
+                        popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                if (item.getItemId() == R.id.delButton) {
+                                    System.out.println("item in pos " + finalI + "can get deleted");
+                                }
+                                return false;
+                            }
+                        });
+                        popupMenu.show();
+                    }
+                });
                 tv1.setText(menuItemEntities.get(i).getItemName());
                 tv1.setTextSize(40);
                 LL.addView(tv1);
@@ -222,4 +244,6 @@ public class MenuActivity extends AppCompatActivity {
     public void sendItems(View v){
         System.out.println("Sending items");
     }
+
+
 }
