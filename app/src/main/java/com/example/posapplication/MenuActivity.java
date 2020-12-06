@@ -37,6 +37,7 @@ public class MenuActivity extends AppCompatActivity {
     MenuItemDao menuItemDao;
     boolean isLoaded = false;
     double totalPrice = 0;
+    int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +158,8 @@ public class MenuActivity extends AppCompatActivity {
         } else {
             tableobj.addMenuItem(MIE);
             updateList();
+
+
         }
     }
 
@@ -197,31 +200,13 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void updateList() {
+
         LL = (LinearLayout) findViewById(R.id.linearLayout);
         ArrayList<MenuItemEntity> menuItemEntities = tableobj.getMenuArray();
         TextView priceText = (TextView) findViewById(R.id.editTextNumber);
         if(!isLoaded) {
             for (int i = 0; i < menuItemEntities.size(); i++) {
                 TextView tv1 = new TextView(this);
-                int finalI = i;
-                tv1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        System.out.println("item in pos " + finalI + "selected");
-                        PopupMenu popupMenu = new PopupMenu(MenuActivity.this, v);
-                        popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
-                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-                                if (item.getItemId() == R.id.delButton) {
-                                    System.out.println("item in pos " + finalI + "can get deleted");
-                                }
-                                return false;
-                            }
-                        });
-                        popupMenu.show();
-                    }
-                });
                 tv1.setText(menuItemEntities.get(i).getItemName());
                 tv1.setTextSize(40);
                 LL.addView(tv1);
@@ -229,15 +214,41 @@ public class MenuActivity extends AppCompatActivity {
                 totalPrice += menuItemEntities.get(i).getPrice();
                 priceText.setText( " " + totalPrice);
 
+
+
             }
         }
         else {
             TextView tv1 = new TextView(this);
+            tv1.setTooltipText(String.valueOf(index));
+            tv1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PopupMenu popupMenu = new PopupMenu(MenuActivity.this, v);
+                    popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            if (item.getItemId() == R.id.delButton) {
+                                LL.removeView(v);
+                                System.out.println(tv1.getTooltipText());
+                               menuItemEntities.remove(tv1.getTooltipText());
+                               tableobj.removeMenuItem((Integer.parseInt(String.valueOf(tv1.getTooltipText()))));
+                                index -= 1;
+                            }
+                            return false;
+                        }
+                    });
+                    popupMenu.show();
+                }
+            });
             tv1.setText(menuItemEntities.get(menuItemEntities.size()-1).getItemName());
             tv1.setTextSize(40);
             LL.addView(tv1);
             totalPrice += menuItemEntities.get(menuItemEntities.size()-1).getPrice();
             priceText.setText( " " + totalPrice);
+            index += 1;
+
         }
         isLoaded = true;
     }
