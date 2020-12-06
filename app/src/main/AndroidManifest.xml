@@ -15,6 +15,7 @@
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".DiningActivity" />
+        <activity android:name=".OrderReadyActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

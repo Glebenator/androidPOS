@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -23,9 +24,12 @@ public interface TableDao {
     @Query("Select * FROM tables WHERE is_ready=(:is_ready)")
     List<Table> getIsReady(boolean is_ready);
 
-//    @Query("SELECT * FROM tables")
-//    List<Table> getAll();
-//
+    @Query("SELECT * FROM tables")
+    List<Table> getAll();
+
+    @Update
+    void updateTable(Table table);
+
 //    @Query("SELECT * FROM tables")
 //    LiveData<List<Table>> getAllTables();
 

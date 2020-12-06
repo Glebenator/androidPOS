@@ -55,8 +55,8 @@ public class CookScreen extends AppCompatActivity {
         for (int i = 0; i < tableList.size(); i++){ //Loop through every available table in Database
             ScrollView sv = new ScrollView(this); //create a scroll view(vertical to fit many menu items)
             LinearLayout ll = new LinearLayout(this); //This layout holds item names
-            LinearLayout ParentVertical = new LinearLayout(this); //I made this to seperate a table number from scrolling
-            //need to amke Parent Vertical to have some margins between each instance of Parent Vertical
+            LinearLayout ParentVertical = new LinearLayout(this); //I made this to separate a table number from scrolling
+            //need to make Parent Vertical to have some margins between each instance of Parent Vertical
             Space space = new Space(this);
             space.setMinimumWidth(20);
             HL.addView(space);
@@ -76,7 +76,7 @@ public class CookScreen extends AppCompatActivity {
 
             TextView tablenum = new TextView(this); //table number text
             tablenum.setTextSize(40);
-            tablenum.setBackgroundColor(Color.GREEN);
+            tablenum.setBackgroundColor(Color.RED);
             tablenum.setText(tableList.get(i).getNumber());
             ParentVertical.addView(tablenum); //add to the parent layout
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
@@ -92,6 +92,7 @@ public class CookScreen extends AppCompatActivity {
         }
     }
 
+    // Bump items modify a table's isReady
     public void bumpItems(View v){
         TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
         TableDao tableDao = tableDatabase.tableDao();
@@ -99,7 +100,9 @@ public class CookScreen extends AppCompatActivity {
         Thread deleteThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                tableDao.deleteByTable(tableList.get(index).getNumber());
+                Table table = tableDao.Search(tableList.get(index).getNumber());
+                table.setReady(true);
+                tableDao.updateTable(table);
             }
         });
         deleteThread.start();
@@ -110,8 +113,6 @@ public class CookScreen extends AppCompatActivity {
         }
         HL.removeAllViews();
         getItems();
-
-
 
     }
 }

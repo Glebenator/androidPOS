@@ -1,5 +1,6 @@
 package com.example.posapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public class KitchenScreen extends AppCompatActivity {
+public class OrderReadyActivity extends AppCompatActivity {
     List<Table> tableList;
     LinearLayout HL;
     int index = 0;
@@ -20,7 +21,7 @@ public class KitchenScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cook_screen);
+        setContentView(R.layout.activity_ready_orders);
         getItems();
     }
 
@@ -28,7 +29,7 @@ public class KitchenScreen extends AppCompatActivity {
         Thread itemThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                tableList = TableDatabase.getTableDatabase(getApplicationContext()).tableDao().getIsReady(false);
+                tableList = TableDatabase.getTableDatabase(getApplicationContext()).tableDao().getAll();
             }
         });
         itemThread.start();
@@ -67,6 +68,11 @@ public class KitchenScreen extends AppCompatActivity {
             TextView tablenum = new TextView(this); //table number text
             tablenum.setTextSize(40);
             tablenum.setText(tableList.get(i).getNumber());
+            if (tableList.get(i).isReady() == true) {
+                tablenum.setBackgroundColor(Color.GREEN);
+            } else {
+                tablenum.setBackgroundColor(Color.RED);
+            }
             ParentVertical.addView(tablenum); //add to the parent layout
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
@@ -81,26 +87,26 @@ public class KitchenScreen extends AppCompatActivity {
         }
     }
 
-    public void bumpItems(View v){
+    // Clear table that has been delivered
+    public void clearTable(View v) {
         TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
         TableDao tableDao = tableDatabase.tableDao();
 
-        Thread deleteThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                tableDao.deleteByTable(tableList.get(index).getNumber());
+        if (tableList.get(index).isReady()) {
+            Thread deleteThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    tableDao.deleteByTable(tableList.get(index).getNumber());
+                }
+            });
+            deleteThread.start();
+            try {
+                deleteThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
-        deleteThread.start();
-        try {
-            deleteThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            HL.removeAllViews();
+            getItems();
         }
-        HL.removeAllViews();
-        getItems();
-
-
-
     }
 }
