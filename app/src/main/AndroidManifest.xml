@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSApplication">
         <activity
-            android:name=".cookScreen"
+            android:name=".CookScreen"
             android:label="@string/title_activity_cook_screen"></activity>
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminActivity extends AppCompatActivity {
 
-    Button btn_UserDatabase, btn_MenuItemDatabase;
+    Button btn_UserDatabase, btn_MenuItemDatabase, btn_CookScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +17,6 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         btn_UserDatabase = findViewById(R.id.btn_database_screen);
-        btn_MenuItemDatabase = findViewById(R.id.btn_menu_item_database);
-
         btn_UserDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,11 +25,21 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        btn_MenuItemDatabase = findViewById(R.id.btn_menu_item_database);
         btn_MenuItemDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent usersActivity = new Intent(AdminActivity.this, MenuItemActivity.class);
                 startActivity(usersActivity);
+            }
+        });
+
+        btn_CookScreen = findViewById(R.id.btn_cook_screen);
+        btn_CookScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cookActivity = new Intent(AdminActivity.this, CookScreen.class);
+                startActivity(cookActivity);
             }
         });
     }

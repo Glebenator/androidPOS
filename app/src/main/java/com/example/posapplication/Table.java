@@ -26,10 +26,12 @@ public class Table implements Serializable {
     @ColumnInfo(name = "menu_items")
     private ArrayList<MenuItemEntity> menuItemEntities;
 
-    private boolean isSent = false;
+    @ColumnInfo(name = "is_ready")
+    private boolean isReady = false;
 
     public Table(){
         menuItemEntities = new ArrayList<MenuItemEntity>();
+        isReady = false;
     }
 
     public void addMenuItem(MenuItemEntity m){
@@ -88,12 +90,12 @@ public class Table implements Serializable {
         this.number = number;
     }
 
-    public void setSent(boolean b){
-        this.isSent = b;
+    public boolean isReady() {
+        return isReady;
     }
 
-    public boolean getSent(){
-        return isSent;
+    public void setReady(boolean ready) {
+        isReady = ready;
     }
 
     public void printMenuItems() {
