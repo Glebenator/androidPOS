@@ -43,21 +43,4 @@ public abstract class UserDatabase extends RoomDatabase {
         }
         return sInstance;
     }
-
-
-    // Create singleton instance of database
-//    private static volatile UserDatabase userDatabase;
-
-//    static UserDatabase getUserDatabase(final Context context) {
-//        if (userDatabase == null) {
-//            synchronized (UserDatabase.class) {
-//                if (userDatabase == null) {
-//                    userDatabase = Room.databaseBuilder(context.getApplicationContext(),
-//                            UserDatabase.class, "user_database")
-//                            .build();
-//                }
-//            }
-//        }
-//        return userDatabase;
-//    }
 }

@@ -30,7 +30,6 @@ public class activity_TakeOut extends AppCompatActivity {
                 }
             }
         });
-
         searchThread.start();
         try{
             searchThread.join();
