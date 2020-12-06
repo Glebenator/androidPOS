@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -53,6 +54,10 @@ public class CookScreen extends AppCompatActivity {
             ScrollView sv = new ScrollView(this); //create a scroll view(vertical to fit many menu items)
             LinearLayout ll = new LinearLayout(this); //This layout holds item names
             LinearLayout ParentVertical = new LinearLayout(this); //I made this to seperate a table number from scrolling
+            //need to amke Parent Vertical to have some margins between each instance of Parent Vertical
+            Space space = new Space(this);
+            space.setMinimumWidth(20);
+            HL.addView(space);
             ParentVertical.setOrientation(LinearLayout.VERTICAL);
 
             ll.setOrientation(LinearLayout.VERTICAL);
