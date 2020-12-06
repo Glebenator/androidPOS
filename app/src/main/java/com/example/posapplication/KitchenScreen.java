@@ -1,27 +1,17 @@
 package com.example.posapplication;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CookScreen extends AppCompatActivity {
+public class KitchenScreen extends AppCompatActivity {
     List<Table> tableList;
     LinearLayout HL;
     int index = 0;
@@ -76,7 +66,6 @@ public class CookScreen extends AppCompatActivity {
 
             TextView tablenum = new TextView(this); //table number text
             tablenum.setTextSize(40);
-            tablenum.setBackgroundColor(Color.GREEN);
             tablenum.setText(tableList.get(i).getNumber());
             ParentVertical.addView(tablenum); //add to the parent layout
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
