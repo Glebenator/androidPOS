@@ -1,4 +1,6 @@
-package com.example.posapplication;
+package com.example.posapplication.Data;
+
+import com.example.posapplication.UserEntity;
 
 public class UsersData {
 

@@ -23,10 +23,10 @@ public interface TableDao {
     @Query("Select * FROM tables WHERE is_ready=(:is_ready)")
     List<Table> getIsReady(boolean is_ready);
 
-    @Query("SELECT * FROM tables")
-    List<Table> getAll();
-
-    @Query("SELECT * FROM tables")
-    LiveData<List<Table>> getAllTables();
+//    @Query("SELECT * FROM tables")
+//    List<Table> getAll();
+//
+//    @Query("SELECT * FROM tables")
+//    LiveData<List<Table>> getAllTables();
 
 }

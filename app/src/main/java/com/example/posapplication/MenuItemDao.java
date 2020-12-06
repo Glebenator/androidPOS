@@ -26,5 +26,4 @@ public interface MenuItemDao {
     @Query("SELECT * FROM menuItems")
     LiveData<List<MenuItemEntity>> getAllMenuItems();
 
-    // Update Query
 }
