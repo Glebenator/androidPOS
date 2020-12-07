@@ -1,16 +1,16 @@
 package com.example.posapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 
 import java.util.List;
 
@@ -24,7 +24,9 @@ public class AdminCookScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_cook_screen);
+        getItems();
     }
+
     public void getItems(){
         Thread itemThread = new Thread(new Runnable() {
             @Override
@@ -64,11 +66,12 @@ public class AdminCookScreen extends AppCompatActivity {
             });
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
-                tv.setTooltipText(String.valueOf(index));
+                tv.setTooltipText(String.valueOf(j));
+                int finalI1 = j;
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println(v.getTooltipText());
+                        System.out.println(tv.getTooltipText());
                         PopupMenu popupMenu = new PopupMenu(AdminCookScreen.this, v);
                         popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
                         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -81,8 +84,8 @@ public class AdminCookScreen extends AppCompatActivity {
                                         public void run() {
                                             TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
                                             TableDao tableDao = tableDatabase.tableDao();
-                                            Table table = tableDao.Search(tableList.get(index).getNumber());
-                                            table.removeMenuItem(index);
+                                            Table table = tableDao.Search(tableList.get(finalI).getNumber());
+                                            table.removeMenuItem(finalI1);
                                             tableDao.updateTable(table);
                                         }
                                     });
@@ -92,7 +95,7 @@ public class AdminCookScreen extends AppCompatActivity {
                                     } catch (InterruptedException e) {
                                         e.printStackTrace();
                                     }
-                                    index -= 1;
+
                                 }
                                 return false;
                             }
@@ -103,19 +106,51 @@ public class AdminCookScreen extends AppCompatActivity {
                 tv.setTextSize(35);
                 tv.setText(tableList.get(i).getMenuItem(j).getItemName());
                 ll.addView(tv); //add this text to the layout which will be scrollable
-                index += 1;
             }
+
             TextView tablenum = new TextView(this); //table number text
             tablenum.setTextSize(40);
             tablenum.setText(tableList.get(i).getNumber());
             ParentVertical.addView(tablenum); //add to the parent layout
             sv.addView(ll); //Scroll view holds LL that holds menu item names
             ParentVertical.addView(sv); //ParenVertical layout holds a table number and a scroll view
-            HL.addView(ParentVertical); //Horizontal layout is the main parent.
+            if (tableList.get(i).isReady()) {
+                tablenum.setBackgroundColor(Color.GREEN);
+                HL.addView(ParentVertical, 0);
+                HL.addView(space,1);
+
+            } else {
+                tablenum.setBackgroundColor(Color.RED);
+                HL.addView(space);
+                HL.addView(ParentVertical);
+            }
+
+            //Horizontal layout is the main parent.
         }
     }
 
-    // Bump items modify a table's isReady
+    // Clear table that has been delivered
+    public void clearTable(View v) {
+        TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
+        TableDao tableDao = tableDatabase.tableDao();
+
+        if (tableList.get(index).isReady()) {
+            Thread deleteThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    tableDao.deleteByTable(tableList.get(index).getNumber());
+                }
+            });
+            deleteThread.start();
+            try {
+                deleteThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            HL.removeAllViews();
+            getItems();
+        }
+    }
     public void bumpItems(View v){
         TableDatabase tableDatabase = TableDatabase.getTableDatabase(getApplicationContext());
         TableDao tableDao = tableDatabase.tableDao();
