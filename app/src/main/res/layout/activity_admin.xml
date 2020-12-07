@@ -65,6 +65,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_menu_item_database"
                 app:layout_constraintVertical_bias="0.150" />
 
+            <Button
+                android:id="@+id/btn_server_screen"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="Server Screen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_menu_item_database"
+                app:layout_constraintVertical_bias="0.444" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -10,16 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POSApplication">
         <activity
+            android:name=".AdminCookScreen"
+            android:label="@string/title_activity_admin_cook_screen">
+        </activity>
+
+        <activity
             android:name=".CookScreen"
-            android:label="@string/title_activity_cook_screen"></activity>
+            android:label="@string/title_activity_cook_screen" />
         <activity android:name=".activity_TakeOut" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".DiningActivity" />
         <activity android:name=".OrderReadyActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".AdminActivity" />
-        <activity android:name=".MenuItemActivity"></activity>
+        <activity android:name=".MenuItemActivity" />
         <activity android:name=".MenuItemAddActivity" />
         <activity
             android:name=".UsersActivity"

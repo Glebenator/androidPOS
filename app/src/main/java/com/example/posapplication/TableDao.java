@@ -30,7 +30,4 @@ public interface TableDao {
     @Update
     void updateTable(Table table);
 
-//    @Query("SELECT * FROM tables")
-//    LiveData<List<Table>> getAllTables();
-
 }

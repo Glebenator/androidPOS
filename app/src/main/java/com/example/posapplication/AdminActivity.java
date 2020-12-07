@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminActivity extends AppCompatActivity {
 
-    Button btn_UserDatabase, btn_MenuItemDatabase, btn_CookScreen;
+    Button btn_UserDatabase, btn_MenuItemDatabase, btn_CookScreen, btn_ServerScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,16 @@ public class AdminActivity extends AppCompatActivity {
         btn_CookScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cookActivity = new Intent(AdminActivity.this, CookScreen.class);
+                Intent cookActivity = new Intent(AdminActivity.this, AdminCookScreen.class);
                 startActivity(cookActivity);
+            }
+        });
+        btn_ServerScreen = findViewById(R.id.btn_server_screen);
+        btn_ServerScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent serverActivity = new Intent(AdminActivity.this, MainActivity.class);
+                startActivity(serverActivity);
             }
         });
     }
