@@ -50,7 +50,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Shakes"
+            android:text="Shake"
             android:onClick="itemSelected"
             android:tooltipText="Shakes"/>
     </LinearLayout>

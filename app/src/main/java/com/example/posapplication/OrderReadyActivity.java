@@ -50,9 +50,7 @@ public class OrderReadyActivity extends AppCompatActivity {
             //need to amke Parent Vertical to have some margins between each instance of Parent Vertical
             Space space = new Space(this);
             space.setMinimumWidth(20);
-            HL.addView(space);
             ParentVertical.setOrientation(LinearLayout.VERTICAL);
-
             ll.setOrientation(LinearLayout.VERTICAL);
             ll.isClickable(); //we can click on the layout which is scrollable
             int finalI = i;
@@ -64,27 +62,39 @@ public class OrderReadyActivity extends AppCompatActivity {
                     clickedView = v;
                 }
             });
-
-            TextView tablenum = new TextView(this); //table number text
-            tablenum.setTextSize(40);
-            tablenum.setText(tableList.get(i).getNumber());
-            if (tableList.get(i).isReady() == true) {
-                tablenum.setBackgroundColor(Color.GREEN);
-            } else {
-                tablenum.setBackgroundColor(Color.RED);
-            }
-            ParentVertical.addView(tablenum); //add to the parent layout
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
                 tv.setTextSize(35);
                 tv.setText(tableList.get(i).getMenuItem(j).getItemName());
                 ll.addView(tv); //add this text to the layout which will be scrollable
-
             }
+
+            TextView tablenum = new TextView(this); //table number text
+            tablenum.setTextSize(40);
+            tablenum.setText(tableList.get(i).getNumber());
+            ParentVertical.addView(tablenum); //add to the parent layout
             sv.addView(ll); //Scroll view holds LL that holds menu item names
             ParentVertical.addView(sv); //ParenVertical layout holds a table number and a scroll view
-            HL.addView(ParentVertical); //Horizontal layout is the main parent.
+            if (tableList.get(i).isReady()) {
+                tablenum.setBackgroundColor(Color.GREEN);
+                HL.addView(ParentVertical, 0);
+                HL.addView(space,1);
+
+            } else {
+                tablenum.setBackgroundColor(Color.RED);
+                HL.addView(space);
+                HL.addView(ParentVertical);
+            }
+
+             //Horizontal layout is the main parent.
         }
+    }
+
+    private void sortView(int i) {
+        //item in HL at index 1 should now appear at the begining.
+        View v = HL.getChildAt(i);
+        HL.removeViewAt(i);
+        HL.addView(v,0);
     }
 
     // Clear table that has been delivered

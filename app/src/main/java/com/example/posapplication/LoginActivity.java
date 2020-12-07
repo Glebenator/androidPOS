@@ -49,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                                     startingIntent = new Intent(getApplicationContext(), AdminActivity.class);
                                 } else if (userEntity.getRole().equals("Server")) {
                                     startingIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                } else if (userEntity.getRole().equals("Cook")){
+                                    startingIntent = new Intent(getApplicationContext(), CookScreen.class);
                                 }
                                 startActivity(startingIntent);
                             }

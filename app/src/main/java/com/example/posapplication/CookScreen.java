@@ -78,6 +78,7 @@ public class CookScreen extends AppCompatActivity {
             tablenum.setTextSize(40);
             tablenum.setBackgroundColor(Color.RED);
             tablenum.setText(tableList.get(i).getNumber());
+            tablenum.setTextColor(Color.BLACK);
             ParentVertical.addView(tablenum); //add to the parent layout
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
@@ -87,6 +88,7 @@ public class CookScreen extends AppCompatActivity {
 
             }
             sv.addView(ll); //Scroll view holds LL that holds menu item names
+
             ParentVertical.addView(sv); //ParenVertical layout holds a table number and a scroll view
             HL.addView(ParentVertical); //Horizontal layout is the main parent.
         }

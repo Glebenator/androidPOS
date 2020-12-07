@@ -37,15 +37,6 @@ public class MainActivity extends AppCompatActivity {
         CookScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), CookScreen.class);
-                startActivity(startIntent);
-            }
-        });
-
-        Button orderReadyBtn = (Button) findViewById(R.id.btn_orderReady);
-        orderReadyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), OrderReadyActivity.class);
                 startActivity(startIntent);
             }
