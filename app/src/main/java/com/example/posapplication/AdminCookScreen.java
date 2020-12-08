@@ -3,10 +3,12 @@ package com.example.posapplication;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Space;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +66,28 @@ public class AdminCookScreen extends AppCompatActivity {
                     clickedView = v;
                 }
             });
+            ParentVertical.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    index = finalI;
+                    clickedView = v;
+                }
+            });
+            ll.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            ParentVertical.setBackgroundColor(Color.LTGRAY);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            ParentVertical.setBackgroundColor(Color.WHITE);
+                            break;
+                    }
+
+                    return false;
+                }
+            });
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
                 tv.setTooltipText(String.valueOf(j));
@@ -71,7 +95,6 @@ public class AdminCookScreen extends AppCompatActivity {
                 tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println(tv.getTooltipText());
                         PopupMenu popupMenu = new PopupMenu(AdminCookScreen.this, v);
                         popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
                         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

@@ -3,6 +3,7 @@ package com.example.posapplication;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -71,6 +72,28 @@ public class CookScreen extends AppCompatActivity {
                 public void onClick(View v) {
                     index = finalI;
                     clickedView = v;
+                }
+            });
+            ParentVertical.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    index = finalI;
+                    clickedView = v;
+                }
+            });
+            ll.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            ParentVertical.setBackgroundColor(Color.LTGRAY);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            ParentVertical.setBackgroundColor(Color.WHITE);
+                            break;
+                    }
+
+                    return false;
                 }
             });
 

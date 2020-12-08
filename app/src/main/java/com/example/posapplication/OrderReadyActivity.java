@@ -2,6 +2,7 @@ package com.example.posapplication;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -62,6 +63,29 @@ public class OrderReadyActivity extends AppCompatActivity {
                     clickedView = v;
                 }
             });
+            ll.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            ParentVertical.setBackgroundColor(Color.LTGRAY);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            ParentVertical.setBackgroundColor(Color.WHITE);
+                            break;
+                    }
+
+                    return false;
+                }
+            });
+            ParentVertical.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    index = finalI;
+                    clickedView = v;
+                }
+            });
+
             for (int j = 0; j < tableList.get(i).getNumItems(); j++){ //loop through each menu item in a given table
                 TextView tv = new TextView(this); //create a text for each menu item
                 tv.setTextSize(35);

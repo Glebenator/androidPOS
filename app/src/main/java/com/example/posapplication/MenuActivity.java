@@ -45,7 +45,6 @@ public class MenuActivity extends AppCompatActivity {
         if(getIntent().getExtras() != null){
             tableobj = (Table) getIntent().getSerializableExtra("table");
             tableNum = tableobj.getNumber();
-            System.out.println(tableNum);
         }
 
         super.onCreate(savedInstanceState);
@@ -115,7 +114,6 @@ public class MenuActivity extends AppCompatActivity {
                     public void run() {
                         Table checkTable = tableDao.Search(String.valueOf(tableobj.getNumber()));
                         if (checkTable != null) {
-                            System.out.println("Table " + tableobj.getNumber() +":");
                             checkTable.printMenuItems();
                         }
                     }
@@ -187,8 +185,6 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Table table = tableDao.Search(tableobj.getNumber());
-                System.out.println(table.getNumber());
-                System.out.println(table.getNumItems());
             }
         });
         tableThread.start();
@@ -222,7 +218,6 @@ public class MenuActivity extends AppCompatActivity {
             tv1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(v.getTooltipText());
                     PopupMenu popupMenu = new PopupMenu(MenuActivity.this, v);
                     popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -230,7 +225,6 @@ public class MenuActivity extends AppCompatActivity {
                         public boolean onMenuItemClick(MenuItem item) {
                             if (item.getItemId() == R.id.delButton) {
                                 LL.removeView(v);
-                                System.out.println(v.getTooltipText());
                                menuItemEntities.remove(v.getTooltipText());
                                tableobj.removeMenuItem((Integer.parseInt(String.valueOf(v.getTooltipText()))));
                                 index -= 1;
@@ -251,9 +245,6 @@ public class MenuActivity extends AppCompatActivity {
 
         }
         isLoaded = true;
-    }
-    public void sendItems(View v){
-        System.out.println("Sending items");
     }
 
 
