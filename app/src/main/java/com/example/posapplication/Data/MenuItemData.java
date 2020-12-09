@@ -6,33 +6,33 @@ public class MenuItemData {
     public static MenuItemEntity[] populateMenuItemDatabase() {
         return new MenuItemEntity[] {
                 // Breakfast
-                new MenuItemEntity("Nat's Breakfast", 12.99),
-                new MenuItemEntity("Sunny Start", 10.56),
-                new MenuItemEntity("Benedict", 8.36),
+                new MenuItemEntity("Nat's Breakfast", 15.49),
+                new MenuItemEntity("Sunny Start", 13.99),
+                new MenuItemEntity("Benedict", 15.49),
 
                 // Burgers
-                new MenuItemEntity("Legendary Burger", 13.80),
-                new MenuItemEntity("BC Burger", 15.39),
-                new MenuItemEntity("Impossible", 18.59),
-                new MenuItemEntity("Chicken Burger", 18.59),
+                new MenuItemEntity("Legendary Burger", 14.99),
+                new MenuItemEntity("BC Burger", 17.99),
+                new MenuItemEntity("Impossible", 17.99),
+                new MenuItemEntity("Chicken Burger", 17.99),
 
                 // Deserts
-                new MenuItemEntity("Strawberry Cheescake", 18.59),
-                new MenuItemEntity("Blueberry Cheescake", 18.59),
-                new MenuItemEntity("Brownie", 18.59),
-                new MenuItemEntity("Apple Pie", 18.59),
+                new MenuItemEntity("Strawberry Cheescake", 6.99),
+                new MenuItemEntity("Blueberry Cheescake", 6.99),
+                new MenuItemEntity("Brownie", 6.99),
+                new MenuItemEntity("Apple Pie", 6.99),
 
                 // Drinks
-                new MenuItemEntity("Pop", 18.59),
-                new MenuItemEntity("Tea", 18.59),
-                new MenuItemEntity("Coffee", 18.59),
-                new MenuItemEntity("Shakes", 18.59),
+                new MenuItemEntity("Pop", 3.00),
+                new MenuItemEntity("Tea", 3.00),
+                new MenuItemEntity("Coffee", 3.49),
+                new MenuItemEntity("Shakes", 5.99),
 
                 // Pastas and Bowls
-                new MenuItemEntity("Fettuciine", 18.59),
-                new MenuItemEntity("Bolognese", 18.59),
-                new MenuItemEntity("Teriyaki", 18.59),
-                new MenuItemEntity("Power Bowl", 18.59)
+                new MenuItemEntity("Fettuccine", 19.49),
+                new MenuItemEntity("Bolognese", 17.99),
+                new MenuItemEntity("Teriyaki", 18.49),
+                new MenuItemEntity("Power Bowl", 18.49)
         };
     }
 }

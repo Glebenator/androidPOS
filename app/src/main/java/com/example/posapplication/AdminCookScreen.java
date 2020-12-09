@@ -16,7 +16,7 @@ import androidx.appcompat.widget.PopupMenu;
 
 import java.util.List;
 
-public class AdminCookScreen extends AppCompatActivity {
+public abstract class AdminCookScreen extends AppCompatActivity {
     List<Table> tableList;
     LinearLayout HL;
     int index = 0;
@@ -59,13 +59,7 @@ public class AdminCookScreen extends AppCompatActivity {
             ll.isClickable(); //we can click on the layout which is scrollable
             int finalI = i;
 
-            ll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    index = finalI;
-                    clickedView = v;
-                }
-            });
+
             ParentVertical.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -78,10 +72,12 @@ public class AdminCookScreen extends AppCompatActivity {
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
-                            ParentVertical.setBackgroundColor(Color.LTGRAY);
+                           ll.setBackgroundColor(Color.LTGRAY);
+                            index = finalI;
+                            clickedView = v;
                             break;
                         case MotionEvent.ACTION_UP:
-                            ParentVertical.setBackgroundColor(Color.WHITE);
+                            ll.setBackgroundColor(Color.WHITE);
                             break;
                     }
 

@@ -26,9 +26,9 @@
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fettuciine"
             android:onClick="itemSelected"
-            android:tooltipText="Fettuciine"/>
+            android:text="Fettuccine"
+            android:tooltipText="Fettuciine" />
 
         <Button
             android:id="@+id/button4"

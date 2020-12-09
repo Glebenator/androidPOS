@@ -225,6 +225,9 @@ public class MenuActivity extends AppCompatActivity {
                         public boolean onMenuItemClick(MenuItem item) {
                             if (item.getItemId() == R.id.delButton) {
                                 LL.removeView(v);
+                                totalPrice -= menuItemEntities.get((Integer.parseInt(String.valueOf(v.getTooltipText())))).getPrice();
+                                String result = String.format("%.2f", totalPrice);
+                                priceText.setText(result);
                                menuItemEntities.remove(v.getTooltipText());
                                tableobj.removeMenuItem((Integer.parseInt(String.valueOf(v.getTooltipText()))));
                                 index -= 1;
