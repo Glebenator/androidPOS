@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class DiningActivity extends AppCompatActivity {
-    private Button table1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,6 @@ public class DiningActivity extends AppCompatActivity {
         }
 
         tableobj.setNumber(String.valueOf(view.getTooltipText()));
-        tableobj.printMenuItems();
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("table", tableobj);
         startActivity(intent);

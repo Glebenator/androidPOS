@@ -208,7 +208,8 @@ public class MenuActivity extends AppCompatActivity {
                 LL.addView(tv1);
 
                 totalPrice += menuItemEntities.get(i).getPrice();
-                priceText.setText( " " + totalPrice);
+                String result = String.format("%.2f", totalPrice);
+                priceText.setText( " " + result);
             }
             index = menuItemEntities.size();
         }

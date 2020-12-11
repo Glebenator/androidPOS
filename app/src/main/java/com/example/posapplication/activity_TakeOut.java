@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TableLayout;
 
 public class activity_TakeOut extends AppCompatActivity {
-    public CharSequence callerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +37,9 @@ public class activity_TakeOut extends AppCompatActivity {
         }
 
         tableobj.setNumber(String.valueOf(view.getTooltipText()));
-        tableobj.printMenuItems();
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("table", tableobj);
         startActivity(intent);
-    }
-    public CharSequence getCallerID(){
-        return callerID;
     }
 }
 

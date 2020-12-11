@@ -16,7 +16,7 @@ import androidx.appcompat.widget.PopupMenu;
 
 import java.util.List;
 
-public abstract class AdminCookScreen extends AppCompatActivity {
+public class AdminCookScreen extends AppCompatActivity {
     List<Table> tableList;
     LinearLayout HL;
     int index = 0;
