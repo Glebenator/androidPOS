@@ -31,8 +31,29 @@ public class LoginActivity extends AppCompatActivity {
                 if (userIdText.isEmpty() || passwordText.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Fill all Fields!", Toast.LENGTH_SHORT).show();
                 } else {
+
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     UserDao userDao = userDatabase.userDao();
+
+                    MenuItemDatabase menuItemDatabase = MenuItemDatabase.getMenuItemsDatabase(getApplicationContext());
+                    MenuItemDao menuItemDao = menuItemDatabase.menuItemDao();
+
+                    // Initialize user and menu item database on first run
+                    Thread initializeDbThread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            UserEntity userEntity = userDao.login(userIdText, passwordText);
+                            MenuItemEntity menuItem = menuItemDao.Search(null);
+                        }
+                    });
+
+                    initializeDbThread.start();
+                    try {
+                        initializeDbThread.join();
+                    } catch (InterruptedException e) {
+                            e.printStackTrace();
+                    }
+
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
